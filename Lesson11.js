@@ -32,17 +32,23 @@ let student = {
   };
 
 let studentJson =JSON.stringify(student);
+let studentString ='{name: John, age: 30, isAdmin: false}';
 
 //1 вариант
 function transformJson(param) {
-    if(typeof param === 'string'){
-      return param=JSON.parse(param)
-    } else{
-      return param=JSON.stringify(param)
-    }
+  try{
+  if(typeof param === 'string'){
+    return JSON.parse(param);
+  } else {
+    return JSON.stringify(param);
+  }  
+} catch (err) {
+  return 'Строка не JSON';    
+  }
 }
 console.log(transformJson(student))
 console.log(transformJson(studentJson))
+console.log(transformJson(studentString))
 
 //2 вариант
 function transformJson2(param) {
